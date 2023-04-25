@@ -1,0 +1,75 @@
+<div class="container pt-4 table-responsive d-flex align-items-cente">
+  <table class="table table-hover table-bordered text-center align-middle">
+    <thead>
+      <tr class="table-dark">
+        <th scope="col">#</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Usuario</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Estado</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reporte of reportes">
+        <th>{{reporte.id_reporte}}</th>
+        <td>{{reporte.tipo}}</td>
+        <td>{{reporte.nombre +' '+ reporte.apellido}}</td>
+        <td>{{reporte.telefono}}</td>
+        <td>{{reporte.estado}}</td>
+        <td>
+          <button type="button" class="btn btn-warning me-2 mb-1" (click)="viewReporte(content, reporte.id_reporte)">Detalles</button>
+          <button [disabled]="reporte.estado == 'Verificado'" type="button" class="btn btn-success me-2 mb-1" (click)="updateEstado(reporte.id_reporte)">Verificar</button>
+          <button *ngIf="rol()" type="button" class="btn btn-danger me-2 mb-1" (click)="deleteReporte(reporte.id_reporte)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header ">
+      <h4 class="modal-title" id="modal-basic-title">Detalles</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div *ngFor="let report of reportes">
+      <div *ngIf="id == report.id_reporte" class="container table-responsive ">
+          <table class="table table-bordered text-center  align-middle">
+              <thead>
+                <tr class="table-dark">
+                  <th scope="col">ID</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">Comentario</th> 
+                  <th scope="col">Ubicacion</th>
+                  <th scope="col">Fecha publicación</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellido</th>  
+                  <th scope="col">Contacto</th>     
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{report.id_reporte}} </td>
+                  <td>{{report.tipo}} </td>
+                  <td>{{report.comentarios}}</td>
+                  <td><button class="btn btn-success" (click)="getMap(report.latitud, report.longitud)">Ver ubicacion</button></td>
+                  <td>{{report.fecha}}</td>
+                  <td>{{report.nombre}}</td>
+                  <td>{{report.apellido}}</td>
+                  <td>{{report.telefono}}</td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+  </div>
+  <div class="modal-footer">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4">
+                  <button class="btn btn-secondary" (click)="close()">Volver</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</ng-template>

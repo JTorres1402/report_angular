@@ -1,0 +1,34 @@
+<div class="ps-4 pt-3">
+    <button routerLink="" type="button" class="btn btn-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+      </svg> Regresar</button>
+</div>
+
+<div class="container py-5">
+    <div class="form">
+        <ul class="tab-group">
+            <li class="tab active"><a routerLink="../login">Iniciar sesión</a></li>
+            <li class="tab"><a routerLink="../register">Registrarse</a></li>
+        </ul>
+        <h1>Bienvenido de nuevo</h1>
+        <div class="tab-content">
+            <form (ngSubmit)="valite()">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" [(ngModel)]="user.user" id="inputIdentificacion" name="ident" placeholder="identificacion"
+                        #inputIdentificacion="ngModel" required autocomplete="off">
+                    <label for="inputIdentificacion">Identificacion<span class="req">*</span></label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" [(ngModel)]="user.password" id="inputPassword" name="pass" placeholder="identificacion"
+                    #inputPassword="ngModel" required autocomplete="off">
+                    <label for="inputPassword">Contraseña<span class="req">*</span></label>
+                </div>
+
+                <p class="forgot pt-4"><a href="">¿Has olvidado tu contraseña?</a></p>
+                <button [disabled]="!inputIdentificacion.value || !inputPassword.value" type="submit" class="w-100 p-3 mb-3 btn btn-lg rounded-4 btn-success">Iniciar sesión</button>
+            </form>
+        </div>
+    </div> 
+</div>

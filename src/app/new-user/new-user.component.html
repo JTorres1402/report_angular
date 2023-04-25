@@ -1,0 +1,64 @@
+<button type="button" class="btn btn-outline-light me-2 mt-2" (click)="open(content)">Crear usario</button>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Registro</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form class="form-floating" (ngSubmit)="guard(content)">
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" [(ngModel)]="user.id_usuario" name="ident"
+                    id="inputIdentificacion" #inputIdentificacion="ngModel" placeholder="identificacion" required autocomplete="off">
+                <label for="inputIdentificacion">Identificacion<span class="req">*</span></label>
+            </div>
+
+            <div class="top-row">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" [(ngModel)]="user.nombre" name="name" id="inputNombre"
+                        placeholder="name" #inputNombre="ngModel" required autocomplete="off">
+                    <label for="inputNombre">Nombre<span class="req">*</span></label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" [(ngModel)]="user.apellido" name="lastname"
+                        id="inputApellido" #inputApellido="ngModel" placeholder="lastName" required autocomplete="off">
+                    <label for="inputApellido">Apellido<span class="req">*</span></label>
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" [(ngModel)]="user.correo" name="correo" id="inputCorreo"
+                    placeholder="inputCorreo" #inputCorreo="ngModel" required autocomplete="off">
+                <label for="inputCorreo">Correo electronico<span class="req">*</span></label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" [(ngModel)]="user.telefono" name="phone" id="inputPhone"
+                    placeholder="identificacion" #inputPhone="ngModel" required autocomplete="off">
+                <label for="inputPhone">Telefono<span class="req">*</span></label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <select class="form-select" id="inputRol" [(ngModel)]="user.rol" name="rol" aria-label="Floating label select example">
+                    <option value="2">Usuario</option>
+                    <option value="3">Policia</option>
+                    <option value="4">Bombero</option>
+                    <option value="5">Hospital</option>
+                    <option value="1">Administrador</option>
+                  </select>
+                  <label for="inputRol">Rol</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" [(ngModel)]="user.contrasena" name="password"
+                    id="inputPassword" placeholder="identificacion" #inputPassword="ngModel" required autocomplete="off">
+                <label for="inputPassword">Contraseña<span class="req">*</span></label>
+            </div>
+           
+            <div class="modal-footer">
+                <button [disabled]="!inputIdentificacion.valid || !inputNombre.valid || !inputApellido.valid || !inputCorreo.valid || !inputPhone.valid || !inputPassword.valid" type="submit" class="btn btn-success">Guardar</button>
+            </div>
+        </form>
+    </div>
+</ng-template>

@@ -1,0 +1,15 @@
+<app-navbar-user></app-navbar-user>
+<div class="container p-5">
+    <div class="p-5 mb-4 bg-dark rounded-4 ">
+        <div class="container-fluid py-5" *ngFor="let user of user">
+          <h2 class="fw-lighter text-light">Nombre: <span class="fw-bold">{{user.nombre}}</span> </h2>
+          <h2 class="fw-lighter text-light">Apellido: <span class="fw-bold">{{user.apellido}}</span> </h2>
+          <h2 class="fw-lighter text-light">Identificacion: <span class="fw-bold">{{user.id_usuario}}</span> </h2>
+          <h2 class="fw-lighter text-light">Telefono: <span class="fw-bold">{{user.telefono}}</span></h2>
+          <h2 class="fw-lighter text-light">Correo: <span class="fw-bold">{{user.correo}}</span></h2>
+          <div class="pt-5">
+            <app-edit-user></app-edit-user>
+          </div>
+        </div>
+      </div>
+</div>

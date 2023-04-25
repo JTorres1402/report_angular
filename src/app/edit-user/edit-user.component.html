@@ -1,0 +1,86 @@
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Actualizar Perfil</button>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Actualizar perfil</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <form class="form-floating" (ngSubmit)="edit(content)">
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" [(ngModel)]="user.id_usuario" name="ident"
+                    id="inputIdentificacion" #inputIdentificacion="ngModel" placeholder="identificacion" required
+                    autocomplete="off">
+                <label for="inputIdentificacion">Identificacion<span class="req">*</span></label>
+            </div>
+
+            <div *ngIf="inputIdentificacion.touched && !inputIdentificacion.valid">
+                <ngb-alert [dismissible]="false" type="danger">
+                    Debe ingresar su identificacion
+                </ngb-alert>
+            </div>
+
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" [(ngModel)]="user.nombre" name="name" id="inputNombre"
+                    placeholder="name" #inputNombre="ngModel" required autocomplete="off">
+                <label for="inputNombre">Nombre<span class="req">*</span></label>
+            </div>
+
+            <div *ngIf="inputNombre.touched && !inputNombre.valid">
+                <ngb-alert [dismissible]="false" type="danger">
+                    Debe ingresar su nombre
+                </ngb-alert>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" [(ngModel)]="user.apellido" name="lastname" id="inputApellido"
+                    #inputApellido="ngModel" placeholder="lastName" required autocomplete="off">
+                <label for="inputApellido">Apellido<span class="req">*</span></label>
+            </div>
+
+
+            <div *ngIf="inputApellido.touched && !inputApellido.valid">
+                <ngb-alert [dismissible]="false" type="danger">
+                    Debe ingresar su apellido
+                </ngb-alert>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" [(ngModel)]="user.correo" name="correo" id="inputCorreo"
+                    placeholder="inputCorreo" #inputCorreo="ngModel" required autocomplete="off">
+                <label for="inputCorreo">Correo electronico<span class="req">*</span></label>
+            </div>
+
+            <div *ngIf="inputCorreo.touched && !inputCorreo.valid">
+                <ngb-alert [dismissible]="false" type="danger">
+                    Debe ingresar su correo
+                </ngb-alert>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" [(ngModel)]="user.telefono" name="phone" id="inputPhone"
+                    placeholder="identificacion" #inputPhone="ngModel" required autocomplete="off">
+                <label for="inputPhone">Telefono<span class="req">*</span></label>
+            </div>
+
+            <div *ngIf="inputPhone.touched && !inputPhone.valid">
+                <ngb-alert [dismissible]="false" type="danger">
+                    Debe ingresar su telefono
+                </ngb-alert>
+            </div>
+
+            <div class="modal-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 offset-md-4">
+                            <button
+                                [disabled]="!inputIdentificacion.valid || !inputNombre.valid || !inputApellido.valid || !inputCorreo.valid || !inputPhone.valid"
+                                type="submit" class="btn btn-success">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>
