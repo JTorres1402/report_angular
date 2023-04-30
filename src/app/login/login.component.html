@@ -5,10 +5,10 @@
 </div>
 
 <div class="container py-5">
-    <div class="form">
+    <div class="form bg-dark">
         <ul class="tab-group">
-            <li class="tab active"><a routerLink="../login">Iniciar sesión</a></li>
-            <li class="tab"><a routerLink="../register">Registrarse</a></li>
+            <li class="tab active"><a class="fs-6" routerLink="../login">Iniciar sesión</a></li>
+            <li class="tab"><a class="fs-6" routerLink="../register">Registrarse</a></li>
         </ul>
         <h1>Bienvenido de nuevo</h1>
         <div class="tab-content">
@@ -27,7 +27,7 @@
                 </div>
 
                 <p class="forgot pt-4"><a href="">¿Has olvidado tu contraseña?</a></p>
-                <button [disabled]="!inputIdentificacion.value || !inputPassword.value" type="submit" class="w-100 p-3 mb-3 btn btn-lg rounded-4 btn-success">Iniciar sesión</button>
+                <button [disabled]="!inputIdentificacion.value || !inputPassword.value" type="submit" class="w-100 p-3 mb-3 btn btn-lg rounded-4 btn-success fs-5">Iniciar sesión</button>
             </form>
         </div>
     </div> 

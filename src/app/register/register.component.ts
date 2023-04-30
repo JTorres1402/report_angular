@@ -13,8 +13,16 @@ export class RegisterComponent {
 
   user: newUsuario = new newUsuario();
   messa: any;
+  verificarContra: any
 
   constructor(private service: UsuarioService, private router: Router) {}
+
+  veri() : boolean{
+    if(this.verificarContra == this.user.contrasena){
+      return false
+    }
+    return true
+  }
 
   mostrar(){
     this.service.newUsuaro(this.user).subscribe(data =>{

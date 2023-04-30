@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class HomeComponent {
 
   link(){
-    window.open('https://drive.google.com/file/d/1HzvFAXxTKqVRL1OTloEbgT-NcfZoXJ5Q/view?usp=sharing','_blank')
+    window.open('https://drive.google.com/file/d/1W0MbfxfibswKQ2hGQNN2xYDKRojF2Gt0/view?usp=share_link','_blank')
   }
 
 }

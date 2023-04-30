@@ -7,10 +7,10 @@
 </div>
 
 <div class="container py-5">
-    <div class="form row g-3 needs-validation" novalidate>
+    <div class="form row g-3 needs-validation bg-dark" novalidate>
         <ul class="tab-group">
-            <li class="tab"><a routerLink="../login">Iniciar sesión</a></li>
-            <li class="tab active"><a routerLink="../register">Registrarse</a></li>
+            <li class="tab"><a class="fs-6" routerLink="../login">Iniciar sesión</a></li>
+            <li class="tab active"><a class="fs-6" routerLink="../register">Registrarse</a></li>
         </ul>
         <div class="tab-content">
             <h1>Registrate, es gratis</h1>
@@ -81,7 +81,7 @@
 
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" [(ngModel)]="user.contrasena" name="password"
-                        id="inputPassword" placeholder="identificacion" #inputPassword="ngModel" required
+                        id="inputPassword" placeholder="Contraseña" #inputPassword="ngModel" required
                         autocomplete="off">
                     <label for="inputPassword">Contraseña<span class="req">*</span></label>
                 </div>
@@ -92,10 +92,24 @@
                     </ngb-alert>
                 </div>
 
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" [(ngModel)]="verificarContra" name="password2"
+                        id="inputPassword2" placeholder="Contraseña" #inputPassword2="ngModel" required
+                        autocomplete="off">
+                    <label for="inputPassword2">Repetir contraseña<span class="req">*</span></label>
+                </div>
+
+                <div *ngIf="veri() && inputPassword.touched">
+                    <ngb-alert [dismissible]="false" type="danger">
+                        La contraseña debe coincidir
+                    </ngb-alert>
+                </div>
+                
+
                 <div class="pt-5">
                     <button
-                        [disabled]="!inputIdentificacion.valid || !inputNombre.valid || !inputApellido.valid || !inputCorreo.valid || !inputPhone.valid || !inputPassword.valid"
-                        type="submit" class="w-100 p-3 mb-3 btn btn-lg rounded-4 btn-success">Registrarse</button>
+                        [disabled]="!inputIdentificacion.valid || !inputNombre.valid || !inputApellido.valid || !inputCorreo.valid || !inputPhone.valid || !inputPassword.valid || veri()"
+                        type="submit" class="w-100 p-3 mb-3 btn btn-lg rounded-4 btn-success fs-5" >Registrarse</button>
                 </div>
             </form>
         </div>

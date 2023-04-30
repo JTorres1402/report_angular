@@ -9,7 +9,7 @@
         <form class="form-floating" (ngSubmit)="guard(content)">
 
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" [(ngModel)]="user.id_usuario" name="ident"
+                <input type="number" class="form-control" [(ngModel)]="user.id_usuario" name="ident"
                     id="inputIdentificacion" #inputIdentificacion="ngModel" placeholder="identificacion" required autocomplete="off">
                 <label for="inputIdentificacion">Identificacion<span class="req">*</span></label>
             </div>
@@ -34,7 +34,7 @@
             </div>
 
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" [(ngModel)]="user.telefono" name="phone" id="inputPhone"
+                <input type="number" class="form-control" [(ngModel)]="user.telefono" name="phone" id="inputPhone"
                     placeholder="identificacion" #inputPhone="ngModel" required autocomplete="off">
                 <label for="inputPhone">Telefono<span class="req">*</span></label>
             </div>
